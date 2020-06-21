@@ -50,7 +50,7 @@ PORT=3000
 ## Usage
 
 ##### Widgets
-When creating a `widget` use the following template to customize your own widgets
+When creating a `widget` html file to upload use the following template to customize your own widgets
 ```html
 <fieldset>
     <legend>Datos de vivienda</legend>
