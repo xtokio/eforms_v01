@@ -1,0 +1,28 @@
+name: eforms
+version: 0.1.0
+
+authors:
+  - Luis Gomez <xtokio@gmail.com>
+
+dependencies:
+  dotenv:
+    github: xtokio/dotenv
+  kemal:
+    github: kemalcr/kemal
+    branch: master
+  kemal-session:
+    github: kemalcr/kemal-session
+    branch: master
+  crecto:    
+    github: xtokio/crecto
+    branch: master
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+    
+targets:
+  eforms:
+    main: src/eforms.cr
+
+crystal: 0.34.0
+
+license: MIT

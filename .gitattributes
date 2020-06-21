@@ -1,0 +1,8 @@
+*.cr linguist-detectable=true
+*.ecr linguist-detectable=true
+*.js linguist-detectable=false
+*.css linguist-detectable=false
+*.html linguist-detectable=false
+
+*.cr linguist-language=Crystal
+*.ecr linguist-language=Crystal

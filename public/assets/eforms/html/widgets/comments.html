@@ -1,0 +1,22 @@
+<fieldset>
+    <legend>Comments</legend>
+    <div data-row-span="1">
+        <div data-field-span="1" style="height: unset;">
+            <label>Comment</label>
+            <textarea id="txt_comment" rows="3"></textarea>
+            <div class="float-right" style="margin-top: 15px;">
+                <a id="lnk_add_comment" href="#">Add comment</a>
+            </div>
+        </div>
+    </div>
+    <div data-row-span="1">
+        <div data-field-span="1" style="height: unset;">
+            <a id="lnk_previous_comments" href="#div_previous_comments" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="div_previous_comments">Show previous comments</a>
+            <br><br>
+            <div id="div_previous_comments" class="collapse" style="background-color: white;">
+                <div class="card-body"></div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<script src="/assets/eforms/js/widgets/comments.js"></script>

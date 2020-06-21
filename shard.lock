@@ -1,0 +1,38 @@
+version: 1.0
+shards:
+  crecto:
+    github: xtokio/crecto
+    commit: a8ab7e34cb0b69d4488fce154c0da1bfd9eba318
+
+  db:
+    github: crystal-lang/crystal-db
+    version: 0.9.0
+
+  dotenv:
+    github: xtokio/dotenv
+    commit: f4d3134e98adf2bad2fde7aaabe9ddbc500dd00b
+
+  exception_page:
+    github: crystal-loot/exception_page
+    version: 0.1.4
+
+  kemal:
+    github: kemalcr/kemal
+    commit: a8c0f09b858162bd13c96663febef5527b322a32
+
+  kemal-session:
+    github: kemalcr/kemal-session
+    commit: a9d25e5c851c5bab84be51ee2af47c21adbe3726
+
+  kilt:
+    github: jeromegn/kilt
+    version: 0.4.0
+
+  radix:
+    github: luislavena/radix
+    version: 0.3.9
+
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+    version: 0.16.0
+

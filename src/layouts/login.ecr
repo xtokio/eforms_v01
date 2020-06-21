@@ -1,0 +1,258 @@
+<html class="">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+      <meta name="author" content="Luis Gomez">
+      <meta name="title" content="Dashboard">
+      
+      <!-- Favicon -->
+      <link rel="icon" type="image/png" href="/assets/eforms/img/favicon/favicon.png">
+      <!-- Fonts -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+      <!-- Icons -->
+      <script src="https://kit.fontawesome.com/127d55701c.js" crossorigin="anonymous"></script>
+      
+      <!-- Page plugins -->
+      <link rel="stylesheet" href="/assets/eforms/vendor/sweetalert2/dist/sweetalert2.min.css">
+      <!-- Impact CSS -->
+      <link rel="stylesheet" href="/assets/eforms/css/dashboard.css" type="text/css">
+      <style>
+          p {
+              line-height: unset;
+          }
+          .async-hide {
+              opacity: 0 !important
+          }
+      </style>
+  </head>
+
+  <body class="bg-white g-sidenav-show g-sidenav-pinned" data-gr-c-s-loaded="true">
+      <!-- Main content -->
+      <div class="main-content">
+          <!-- Header -->
+          <div class="header bg-gradient-primary py-7 py-lg-6">
+              <div class="container">
+                  <div class="header-body text-center mb-7">
+                      <div class="row justify-content-center">
+                          <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+                              <h1 class="text-white">eForms</h1>
+                              <p class="text-lead text-white">
+                                Simple forms creation and follow ups
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="separator separator-bottom separator-skew zindex-100">
+                  <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                      <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+                  </svg>
+              </div>
+          </div>
+          <!-- Page content -->
+          <div class="container mt--9 pb-5">
+              <div class="row justify-content-center">
+                  <div class="col-lg-5 col-md-7">
+                      <div class="card bg-secondary border border-soft mb-0">
+                          <div class="card-body px-lg-5 py-lg-5">
+                              <div class="text-center text-gray mb-4"><small>Sign in with credentials</small></div>
+                              <form role="form">
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              <i class="fas fa-user"></i>
+                                            </span>
+                                        </div>
+                                        <input id="txt_user" class="form-control" placeholder="User" type="text" value="lgomez">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              <i class="fas fa-fingerprint"></i>
+                                            </span>
+                                        </div>
+                                        <input id="txt_password" class="form-control" placeholder="Password" type="password" value="lgomez">
+                                    </div>
+                                </div>
+                                <div class="custom-control custom-control-alternative custom-checkbox">
+                                    <input class="custom-control-input" id="customCheckLogin" type="checkbox"> 
+                                    <label class="custom-control-label" for="customCheckLogin">
+                                        <span class="text-muted">Remember me</span>
+                                    </label>
+                                </div>
+                                <div class="text-center">
+                                    <button id="btn_login" type="button" class="btn btn-primary my-4">Sign in</button>
+                                </div>
+                              </form>
+                          </div>
+                      </div>
+                      <div class="row mt-3">
+                          <div class="col-6">
+                              <a id="lnk_forgot" href="#" class="text-gray"><small>Forgot password?</small></a>
+                          </div>
+                          <div class="col-6 text-right">
+                              <a id="lnk_create" href="#" class="text-gray"><small>Create new account</small></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Argon Scripts -->
+      <!-- Core -->
+      <script src="/assets/eforms/vendor/jquery/dist/jquery.min.js"></script>
+      <script src="/assets/eforms/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="/assets/eforms/vendor/js-cookie/js.cookie.js"></script>
+      <script src="/assets/eforms/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+      <script src="/assets/eforms/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+
+      <script src="/assets/eforms/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+      <script src="/assets/eforms/vendor/loadingoverlay/loadingoverlay.js"></script>
+      <!-- Argon JS -->
+      <script src="/assets/eforms/js/dashboard.js"></script>
+      <div class="backdrop d-xl-none" data-action="sidenav-unpin" data-target="undefined"></div>
+      <!-- Demo JS - remove this in your project -->
+      <script src="/assets/eforms/js/demo.min.js"></script>
+      <script>
+          $(document).ready(function(){
+      
+            $.LoadingOverlaySetup({
+              color           : "rgba(0, 0, 0, 0.8)",
+              image           : "/assets/eforms/img/icons/spinner.svg",
+              maxSize         : "80px",
+              minSize         : "20px",
+              resizeInterval  : 0,
+              size            : "100%"
+            });
+      
+            // Show full page LoadingOverlay
+            //$.LoadingOverlay("show");
+      
+            //Close the LoadingOverlay
+            //$.LoadingOverlay("hide");
+
+            // Check credentials
+            $("#txt_user").val(window.localStorage.getItem("agent_user"));
+            $("#txt_password").val(window.localStorage.getItem("agent_password"));
+            if(window.localStorage.getItem("agent_user") != null && window.localStorage.getItem("agent_password") != null)
+              $("#customCheckLogin").prop("checked", true);
+      
+            $(document).keyup(function(e){
+              if(e.keyCode == 13)
+              {
+                login();
+              }
+            });
+      
+            $("#txt_password").keyup(function(e){
+              if(e.keyCode == 13)
+              {
+                login();
+              }
+            });
+      
+            $("#btn_login").on("click",function(){
+              login();
+            });
+
+            $("#lnk_forgot").on("click", function(){
+              Main.show_info("Get in contact with your Supervisor to restore your Password.");
+            });
+
+            $("#lnk_create").on("click", function(){
+              Main.show_info("Get in contact with your Supervisor to create a new Account.");
+            });
+
+          });
+      
+          async function login()
+          {
+            $.LoadingOverlay("show");
+      
+              let user = $("#txt_user").val();
+              let password = $("#txt_password").val();
+      
+              data = {user,password};
+              const response = await Main.login(data);
+              const login_information = await response.json();
+              $.LoadingOverlay("hide");
+              if(login_information.status == "OK")
+              {
+                if($("#customCheckLogin").is(":checked"))
+                {
+                  window.localStorage.setItem("agent_user", user);
+                  window.localStorage.setItem("agent_password", password);
+                }
+                document.location.replace('/eforms');
+              }
+              else
+              {
+                Main.show_error("User / Password not found");
+              }
+          }
+      
+          class Main
+          {
+            static login(params={})
+            {
+              return Main.post("/eforms/login",params)
+              .catch(function(message){
+                $.LoadingOverlay("hide");
+                Main.show_error(message)
+              });
+            }
+      
+            static post(url,params={})
+            {
+              return fetch(url,{
+                method: 'POST',
+                headers: {
+                  'X-Requested-With': 'XMLHttpRequest',
+                  'Content-Type': 'application/json'
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(params)
+              });
+            }
+      
+            static show_success(message)
+            {
+              swal({
+                title: "Success",
+                text: message,
+                type: "success",
+                buttonsStyling: !1,
+                confirmButtonClass: "btn btn-success"
+              });
+            }
+
+            static show_info(message)
+            {
+              swal({
+                title: "Information",
+                text: message,
+                type: "info",
+                buttonsStyling: !1,
+                confirmButtonClass: "btn btn-default"
+              });
+            }
+      
+            static show_error(message)
+            {
+              swal({
+                title: "Warning",
+                text: message,
+                type: "warning",
+                buttonsStyling: !1,
+                confirmButtonClass: "btn btn-warning"
+              });
+            }
+      
+          }
+      </script>
+  </body>
+
+</html>

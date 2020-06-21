@@ -1,0 +1,84 @@
+/**
+ * @file sellect.js is micro-library.
+ * Scaffolded with generator-microjs
+ * @author Lidia Freitas <lidiafreitas.me@gmail.com>
+ */
+
+.sellect-element{
+    border: none;
+    outline: none;
+    height: 18px;
+    background: none;
+}
+
+
+.sellect-container{
+    padding: 5px 5px 0 5px;
+    border-radius: 3px;
+    margin-top: 5px;
+    position: relative;
+    background-color: white;
+}
+
+.sellect-destination-list{
+    display: inline-block;
+}
+
+.sellect-destination-list .sellect-item{
+    margin: 0 5px 5px 0;
+    background-color: #f7fafc;
+    border: 1px solid #f1f1f1;
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 0 5px 2px;
+    display: inline-block;
+}
+.sellect-destination-list .sellect-item .sellect-close-icon{
+    margin-left: 5px;
+    font-size: .7rem;
+    color: #0A48B3;
+}
+
+.sellect-origin-list{
+    overflow: auto;
+    max-height: 0;
+    opacity: 0;
+    transition: opacity 1.1s ease, max-height .2s ease;
+}
+
+.sellect-origin-list.open{
+    max-height: 138px;
+    opacity: 1;
+}
+
+
+.sellect-origin-list .sellect-item{
+    display: block;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.sellect-origin-list .sellect-item:last-child{
+    margin-bottom: 5px;
+}
+
+.sellect-origin-list .sellect-item:hover,
+.sellect-origin-list .sellect-item.active{
+    background: #f6f9fc;
+}
+
+.sellect-origin-list .sellect-item .sellect-close-icon{
+    display: none;
+}
+
+.sellect-arrow-icon{
+    position: absolute;
+    cursor: pointer;
+    font-size: .8rem;
+    top: 5px;
+    right: 0;
+    padding: 8px;
+    color: #0A48B3;
+}

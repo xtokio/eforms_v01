@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header border-0">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="mb-0">Status</h3>
+                    </div>
+                    <div class="col text-right">
+                        <a id="lnk_add_status" href="#" class="btn btn-sm btn-primary load-link" data-link="/eforms/admin/status/new">New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <!-- Projects table -->
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Status</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Created at</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% status.each do |item|%>
+                        <tr>
+                            <th scope="row">
+                                <a href="#"><%= item.id %></a>
+                            </th>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p id="txt_status_<%= item.id %>" class="text-sm mb-0" contenteditable="true"><%= item.status %></p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p class="text-sm mb-0"> <%= item.created_at %> </p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <a class="lnk_status_update" href="#" data-id="<%= item.id %>">Update</a> |
+                                <a class="lnk_status_remove" href="#" data-id="<%= item.id %>">Remove</a>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/eforms/js/admin/status/index.js"></script>

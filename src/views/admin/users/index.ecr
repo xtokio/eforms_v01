@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header border-0">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="mb-0">Users</h3>
+                    </div>
+                    <div class="col text-right">
+                        <input type="file" id="lnk_add_user" class="btn btn-sm btn-default" value="New"/>
+                        <a id="lnk_add_user" href="#" class="btn btn-sm btn-primary load-link" data-link="/eforms/admin/users/new">New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <!-- Projects table -->
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">User</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Password</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Name</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Photo</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Type</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Created at</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody_users">
+                        <% users.each do |user|%>
+                        <tr>
+                            <th scope="row">
+                                <a href="#"><%= user.id %></a>
+                            </th>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p id="txt_user_<%= user.id %>" class="text-sm mb-0" contenteditable="true"><%= user.user %></p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p id="txt_password_<%= user.id %>" class="text-sm mb-0" contenteditable="true"><%= user.password %></p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p id="txt_name_<%= user.id %>" class="text-sm mb-0" contenteditable="true"> <%= user.name %> </p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p id="txt_photo_<%= user.id %>" class="text-sm mb-0" contenteditable="true"> <%= user.photo %> </p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p id="txt_type_<%= user.id %>" class="text-sm mb-0" contenteditable="true"> <%= user.type %> </p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p class="text-sm mb-0"> <%= user.created_at %> </p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <a class="lnk_user_update" href="#" data-id="<%= user.id %>">Update</a> |
+                                <a class="lnk_user_remove" href="#" data-id="<%= user.id %>">Remove</a>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/eforms/js/admin/users/index.js"></script>

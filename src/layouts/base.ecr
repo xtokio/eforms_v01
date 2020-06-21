@@ -1,0 +1,353 @@
+<html class="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="author" content="Luis Gomez">
+    <meta name="title" content="Dashboard">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/eforms/img/favicon/favicon.png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/127d55701c.js" crossorigin="anonymous"></script>    
+    <!-- Page plugins -->
+    <link rel="stylesheet" href="/assets/eforms/gridforms/gridforms.css">
+    <link rel="stylesheet" href="/assets/eforms/vendor/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="/assets/eforms/css/sellect.css">
+    <!-- Impact CSS -->
+    <link rel="stylesheet" href="/assets/eforms/css/dashboard.css" type="text/css">
+    <style>
+        .async-hide {
+            opacity: 0 !important
+        }
+    </style>
+</head>
+
+<body class="g-sidenav-show g-sidenav-pinned" data-gr-c-s-loaded="true">
+    <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+        <div class="scrollbar-inner">
+            <!-- Brand -->
+            <div class="sidenav-header d-flex align-items-center">
+                <a class="navbar-brand text-primary" href="/eforms" style="font-size: 1rem; font-weight: 100;">eForms</a>
+                <div class="ml-auto">
+                    <!-- Sidenav toggler -->
+                    <div class="sidenav-toggler d-none d-xl-block active" data-action="sidenav-unpin" data-target="#sidenav-main">
+                        <div class="sidenav-toggler-inner">
+                            <i class="sidenav-toggler-line"></i>
+                            <i class="sidenav-toggler-line"></i>
+                            <i class="sidenav-toggler-line"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-inner">
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                    <!-- Nav items -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a id="lnk_user" class="nav-link active" href="#navbar-user" data-user-id="<%= user_id %>" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-user">
+                                <div class="avatar media-comment-avatar rounded-circle sidebar-avatar">
+                                    <i>
+                                        <img src="/assets/eforms/img/users/<%= user_photo %>">
+                                    </i>                      
+                                  </div>
+                                <span id="span_user_name" class="nav-link-text"><%= user_name %></span>
+                            </a>
+                            <div class="collapse" id="navbar-user">
+                                <% if is_admin %>
+                                    <div style="white-space:nowrap;">
+                                        <input id="AssumeID" type="text" value="" class="form-control assumedID" placeholder="Assume User" style="width: 90%; font-size: 0.75rem;">
+                                    </div>
+                                <% end %>
+                                <ul class="nav nav-sm flex-column">
+                                    <a href="/eforms/logout" style="margin-left: 20px; margin-top: 10px; text-decoration:underline;cursor:pointer;">Logout</a>
+                                    <div class="dropdown-divider"></div>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/eforms" class="nav-link load-link" data-link="/eforms/dashboard">
+                                <i class="fas fa-th-large text-primary"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#navbar-eforms" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-eforms">
+                                <i class="fas fa-clone text-primary"></i>
+                                <span class="nav-link-text">eForms</span>
+                            </a>
+                            <div class="collapse" id="navbar-eforms">
+                                <ul class="nav nav-sm flex-column">
+                                    <% form_types.each do |form_type|%>
+                                    <li class="nav-item">
+                                        <a href="/eforms" class="nav-link load-link" data-link="/eforms/dashboard/form/new/<%= form_type.id %>" data-form-type="<%= form_type.id %>">
+                                            <span class="sidenav-mini-icon"><%= form_type.form_type.to_s[0] %> </span>
+                                            <span class="sidenav-normal"><%= form_type.form_type %></span>
+                                        </a>
+                                    </li>
+                                    <% end %>
+                                    <div class="dropdown-divider"></div>
+                                </ul>
+                            </div>
+                        </li>
+                        <% if is_admin %>
+                        <li class="nav-item">
+                            <a href="#navbar-settings" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
+                                <i class="fas fa-cog text-primary"></i>
+                                <span class="nav-link-text">Application Admin</span>
+                            </a>
+                            <div class="collapse" id="navbar-settings">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="/eforms" class="nav-link load-link" data-link="/eforms/admin/users">
+                                            <span class="sidenav-mini-icon">U </span>
+                                            <span class="sidenav-normal">Users</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/eforms" class="nav-link load-link" data-link="/eforms/admin/status">
+                                            <span class="sidenav-mini-icon">S </span>
+                                            <span class="sidenav-normal">Status</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/eforms" class="nav-link load-link" data-link="/eforms/admin/widgets">
+                                            <span class="sidenav-mini-icon">W </span>
+                                            <span class="sidenav-normal">Widgets</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/eforms" class="nav-link load-link" data-link="/eforms/admin/form_types">
+                                            <span class="sidenav-mini-icon">E </span>
+                                            <span class="sidenav-normal">eForms</span>
+                                        </a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                </ul>
+                            </div>
+                        </li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+    <div class="main-content" id="panel">
+        <!-- Topnav -->
+        <nav class="navbar navbar-top navbar-expand navbar-dark bg-default border-bottom">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Search form -->
+                    <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-alternative input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                                <input id="txt_search" class="form-control" placeholder="Search" type="text">
+                            </div>
+                        </div>
+                        <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </form>
+                    <!-- Navbar links -->
+                    <ul class="navbar-nav align-items-center ml-md-auto">
+                        <li class="nav-item d-xl-none">
+                            <!-- Sidenav toggler -->
+                            <div class="pr-3 sidenav-toggler sidenav-toggler-dark active" data-action="sidenav-pin" data-target="#sidenav-main">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i> 
+                                    <i class="sidenav-toggler-line"></i> 
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item d-sm-none">
+                            <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                                <i class="ni ni-zoom-split-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav><!-- Header -->
+        <!-- Header -->
+        <div class="header bg-default pb-6">
+            <div class="container-fluid">
+                <div class="header-body">
+                    <div class="row align-items-center py-4">
+                        <div class="col-lg-6 col-7">
+                            <h6 class="h2 text-white d-inline-block mb-0">Welcome to eForms</h6>
+                        </div>
+                    </div>
+                    <!-- Card stats -->
+                    <div class="row">
+                        <% status.each do |record| %>
+                        <div class="col">
+                            <a href="#" class="load-link" data-link="/eforms/dashboard/status/<%= record.status %>">
+                                <div class="card card-stats">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title text-uppercase text-muted mb-0"><%= record.status %></h5>
+                                                <span id="span_status_<%= record.id %>" class="h2 font-weight-bold mb-0">0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <% end %>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page content -->
+        <div class="container-fluid mt--6">
+
+            <!-- Main content -->
+            <div id="main">
+                <%= content %>
+            </div>
+            <!-- Main content -->
+
+            <div class="container-fluid">
+                <!-- Footer -->
+                <footer class="footer pt-0">
+                    <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-6">
+                        <div class="copyright text-center text-lg-left text-muted">
+                            <p>Copyright © 2020 Luis Gomez</p>
+                            <p>Notre Dame, IN 46556</p>
+                            <p>xtokio@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="/eforms">
+                                <p>eForms</p>
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="/assets/eforms/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/eforms/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/eforms/vendor/js-cookie/js.cookie.js"></script>
+    <script src="/assets/eforms/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="/assets/eforms/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <!-- Optional JS -->
+    <script src="/assets/eforms/vendor/loadingoverlay/loadingoverlay.js"></script>
+    <script src="/assets/eforms/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="/assets/eforms/js/sellect.js"></script>
+    <script src="/assets/eforms/js/simpleUpload.min.js"></script>
+    <script src="/assets/eforms/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Argon JS -->
+    <script src="/assets/eforms/js/dashboard.js"></script>
+    <div class="backdrop d-xl-none" data-action="sidenav-unpin" data-target="undefined"></div>
+    <div
+        style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+        <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+        </div>
+    </div>
+    <!-- Demo JS - remove this in your project -->
+    <script src="/assets/eforms/js/demo.min.js"></script>
+
+    <script src="/assets/eforms/js/main.js"></script>
+    <script src="/assets/eforms/js/asterisk.js"></script>
+    <script src="/assets/eforms/js/widgets.js"></script>
+    <script src="/assets/eforms/js/dashboard/forms_show.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.LoadingOverlaySetup({
+                color           : "rgba(0, 0, 0, 0.8)",
+                image           : "/assets/eforms/img/icons/spinner.svg",
+                maxSize         : "80px",
+                minSize         : "20px",
+                resizeInterval  : 0,
+                size            : "100%"
+            });
+            // Show full page LoadingOverlay
+            //$.LoadingOverlay("show");
+
+            //Close the LoadingOverlay
+            //$.LoadingOverlay("hide");
+
+            $(".navbar-nav>.nav-item>.nav-link").on("click",function(){
+                $(".nav-link").each(function(){
+                    $(this).removeClass("active");
+                });
+
+                $(this).addClass("active");
+            });
+
+            // Status Total
+            Main.status_all();
+            
+            // Search
+            $("#txt_search").keypress(async function(e){
+                if (e.which == 13) 
+                {
+                    e.preventDefault();
+
+                    let id = $(this).val();
+                    await Main.load_page(`/eforms/form/search/${id}`).catch(message => Main.show_error(message));
+                    window.history.pushState({}, null, "/eforms");
+                }
+            });
+            
+            // AssumeID
+            $("#AssumeID").keypress(async function(e){
+                if (e.which == 13) 
+                {
+                    $.LoadingOverlay("show");
+
+                    let user_id = $(this).val();
+                    let params = {user_id};
+
+                    await Main.post("/eforms/assumeid",params).catch(message => Main.show_error(message));
+                    window.location.reload(true);
+                }
+            });
+
+            $("#RevertID").on("click",function(){
+                $.LoadingOverlay("show");
+            });
+
+            $(document).on("click",".load-link",async function(e){
+                e.preventDefault();
+
+                // $.LoadingOverlay("show");
+
+                let link = $(this).attr("data-link");
+                await Main.load_page(link).catch(message => Main.show_error(message));
+                window.history.pushState({}, null, "/eforms");
+
+                // Forms show
+                if (window.location.href.indexOf("form/") == -1 && $(".form-show").length > 0)
+                {
+                    Widget.render("show");
+                }
+
+                // $.LoadingOverlay("hide");
+            });
+
+        });
+    </script>
+</body>
+
+</html>

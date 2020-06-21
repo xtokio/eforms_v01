@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>
+    eForms
+  </title>
+  <!--     Fonts and icons     -->
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/eforms/img/favicon/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/127d55701c.js" crossorigin="anonymous"></script>
+
+  <!-- CSS Files -->
+  <link href="/assets/eforms/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
+  <link href="/assets/eforms/css/dashboard.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="error-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="title"><%= error_code %></h1>
+                    <p class="lead"><%= error_message %></p>
+                    <h4 class="description text-default"> <a href="/eforms">return to Dashboard</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <script src="/assets/eforms/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/eforms/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/eforms/vendor/js-cookie/js.cookie.js"></script>
+
+    <script src="/assets/eforms/js/dashboard.js"></script>
+</body>
+</html>

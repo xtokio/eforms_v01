@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header border-0">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="mb-0"><span id="txt_tab_name">New</span> <%= form_type %></h3>
+                        <h5><%= form_type_string %></h5>
+                    </div>
+                    <div class="col" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <h3 class="mb-0">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="#" id="txt_form_number" contenteditable="true">0000</a></li>
+                                </ol>
+                            </nav>
+                            <!-- <span id="txt_form_number" contenteditable="true">0000</span> -->
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form id="form_widgets" data-form-type-id="<%= form_type_id %>" data-widgets="<%= widgets %>" class="grid-form">
+                    <div id="div_widgets">
+                        <!-- Student search -->
+                        
+                        <!-- Student search -->
+                    </div>
+                </form>
+                <div class="row" style="justify-content: flex-end;">
+                    <div class="col-md-2 text-right">
+                        <div class="form-group">
+                            <input type="button" id="btn_form_create" class="btn btn-default" style="color: white; margin-top: 28px; height: 42px;" placeholder="" value="Create">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="/assets/eforms/js/dashboard/forms/new.js"></script>

@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-xl-2" style="padding-right: unset;">
+        <div style="height: 100%; background: white">
+            <div class="card-body" style="padding: unset;">
+                <div class="student_approved_list">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <div class="form-group">
+                                <div class="dropdown" style="width: 100%;">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" style="width: 100%; box-shadow: unset; font-weight: unset; transform: unset;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Send to
+                                    </button>
+                                    <div class="dropdown-menu" style="width: 100%;" aria-labelledby="dropdownMenuButton">
+                                    <% status.each do |item| %>
+                                        <a class="dropdown-item lnk_update_status" data-form-id="<%= forms[0].id %>" href="#"><%= item.status %></a>
+                                    <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <h6 class="heading-small text-muted" style="margin-left: 10px;">eForm</h6>
+                <div class="student_approved_list">
+                    <ul class="nav nav-sm flex-column" style="margin-left: 10px;">
+                        <li class="nav-item">
+                            <span style="font-size: 0.7rem;">Form ID <a href="#"><%= forms[0].id %></a></span>
+                            <br>
+                            <span style="font-size: 0.7rem;">Folio &nbsp; &nbsp; &nbsp; <a href="#"><%= forms[0].form_number %></a></span>
+                            <br>
+                            <span style="font-size: 0.7rem;">User &nbsp; &nbsp; &nbsp; <a href="#"><%= forms[0].assigned_to %></a></span>
+                            <br>
+                            <span style="font-size: 0.7rem;">Status &nbsp;&nbsp; <a href="#"><%= forms[0].status %></a></span>
+                            <br>
+                            <hr class="my-2" style="border-bottom: 1px solid rgba(0, 0, 0, .05); margin-right: 10px;">
+                        </li>
+                    </ul>
+                </div>
+                <h6 class="heading-small text-muted" style="margin-left: 10px;">History</h6>
+                <div id="div_history_list"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-10">
+        <div style="background: white">
+            <div class="card-header border-0">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="mb-0"><%= forms[0].form_type %></h3>
+                        <h5><%= forms[0].form_type_string %></h5>
+                    </div>
+                    <div class="col" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <h3 class="mb-0">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#"><%= forms[0].form_number %></a></li>
+                                </ol>
+                            </nav>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form id="form_widgets_<%= forms[0].id %>" data-form-id="<%= forms[0].id %>" data-form-type-id="<%= forms[0].form_type_id %>" data-widgets="<%= forms[0].widgets %>" class="grid-form form-show">
+                    <div id="div_widgets"></div>
+                </form>
+                <div class="row" style="justify-content: flex-end;">
+                    <div class="col-md-2 text-right">
+                        <div class="form-group">
+                            <input type="button" id="btn_form_update" class="btn btn-default" data-form-id="<%= forms[0].id %>" style="color: white; margin-top: 28px; height: 42px;" placeholder="" value="Update">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script id="script_json_<%= forms[0].id %>" type="text/json"><%= forms[0].form_data %></script>
+<br><br>

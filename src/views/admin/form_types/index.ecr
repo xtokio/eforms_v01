@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header border-0">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="mb-0">eForms</h3>
+                    </div>
+                    <div class="col text-right"><a href="#!" class="btn btn-sm btn-primary load-link" data-link="/eforms/admin/form_types/new">New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <!-- Projects table -->
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">eForm</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Description</th>
+                            <th scope="col">On / Off</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Created at</th>
+                            <th scope="col" style="text-align:center; vertical-align: middle;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% form_types.each do |form_type|%>
+                        <tr>
+                            <th scope="row">
+                                <a href="#"><%= form_type.id %></a>
+                            </th>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p id="txt_form_type_<%= form_type.id %>" class="text-sm mb-0" contenteditable="true"><%= form_type.form_type %></p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p id="txt_form_type_string_<%= form_type.id %>" class="text-sm mb-0" contenteditable="true"> <%= form_type.form_type_string %> </p>
+                            </td>
+                            <td>
+                                <p id="txt_on_off_<%= form_type.id %>" class="text-sm mb-0" contenteditable="true"> <%= form_type.on_off %> </p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <p class="text-sm mb-0"> <%= form_type.created_at %> </p>
+                            </td>
+                            <td style="text-align:center; vertical-align: middle;">
+                                <a class="lnk_form_type_update" href="#" data-id="<%= form_type.id %>">Update</a> |
+                                <a class="lnk_form_type_remove" href="#" data-id="<%= form_type.id %>">Remove</a>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/eforms/js/admin/form_types/index.js"></script>
