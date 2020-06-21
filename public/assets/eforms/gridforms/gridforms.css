@@ -30,7 +30,7 @@
 .grid-form .form-datepicker .input-group-prepend .input-group-text {border: unset;}
 
 .grid-form fieldset { border: none; padding: 0; margin: 0; }
-.grid-form fieldset legend { border: none; border-bottom: 4px solid #404040; color: #404040; font-size: 18px; font-weight: bold; padding-bottom: 5px; position: static; width: 100%; }
+.grid-form fieldset legend { border: none; border-bottom: 2px solid #404040; color: #404040; font-size: 18px; font-weight: bold; padding-bottom: 5px; position: static; width: 100%; }
 .grid-form fieldset fieldset legend { border-bottom: 2px solid #404040; font-weight: normal; }
 .grid-form fieldset fieldset fieldset legend { border-bottom: 1px solid #404040; font-weight: normal; font-size: 15px; }
 .grid-form [data-row-span] { border-bottom: 1px solid #333; width: 100%; zoom: 1; }
