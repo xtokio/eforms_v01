@@ -5,19 +5,19 @@ Simple forms creation and follow ups
 ##### Screenshots
 
 Login
-![DialerCR 02](screenshots/eforms_01.png)
+![eForms 01](screenshots/eforms_01.png)
 
 Dashboard
-![DialerCR 02](screenshots/eforms_02.png)
+![eForms 02](screenshots/eforms_02.png)
 
 Forms
-![DialerCR 01](screenshots/eforms_03.png)
+![eForms 03](screenshots/eforms_03.png)
 
 Forms creation
-![DialerCR 01](screenshots/eforms_04.png)
+![eForms 04](screenshots/eforms_04.png)
 
 Forms Widgets
-![DialerCR 01](screenshots/eforms_05.png)
+![eForms 05](screenshots/eforms_05.png)
 
 ## Installation
 
