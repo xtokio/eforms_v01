@@ -85,8 +85,6 @@ class Widget
                     if(data.type == "multi")
                     {
                         $(`#${data.id}`).attr("data-destinationList",data.value);
-                        // var multi_select = sellect(`#${data.id}`);
-                        // multi_select.init();
                     }
                     else
                         $(`#${data.id}`).val(data.value)
@@ -97,7 +95,7 @@ class Widget
             Main.sortMeBy("data-order", element, "div", "asc");
 
         });
-
+                
         // Update Form
         $("#btn_form_update").on("click",async function(){
             let id = $(this).attr("data-form-id");

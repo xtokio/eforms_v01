@@ -39,11 +39,13 @@
 
         if (self.options) {
             self.options.originList.forEach(function (item) {
-                createListsHTML(self.originListHTML, item);
+                if(item != "")
+                    createListsHTML(self.originListHTML, item);
             });
 
             self.options.destinationList.forEach(function (item) {
-                createListsHTML(self.destinationListHTML, item);
+                if(item != "")
+                    createListsHTML(self.destinationListHTML, item);
             });
 
             self.options.element.parentNode.insertBefore(self.container, self.options.element);

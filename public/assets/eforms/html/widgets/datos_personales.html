@@ -28,7 +28,7 @@
         <div class="form-group form-datepicker">
           <div class="input-group">
               <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="text-default ni ni-calendar-grid-58"></i></span>
+                  <span class="input-group-text"><i class="fas fa-calendar-alt text-default"></i></span>
               </div>
               <input id="dtp_fecha_nacimiento" class="form-control datepicker" placeholder="Select date" type="text" value="06/20/2020">
           </div>
@@ -88,4 +88,21 @@
       </div>
     </div>
   </fieldset>
-  <script src="/assets/eforms/js/widgets/datos_personales.js"></script>
+  <fieldset>
+    <legend>Estado Civil</legend>
+    <div data-row-span="1">
+      <div data-field-span="1" class="select-dropdown" style="height: auto;">
+        <label>Estado Civil</label>
+        <input type="text" id="txt_select_estado_civil" class="multi-select" style="width: unset;" data-originList="Soltero,Casado,Divorciado,Separado" data-destinationList="">
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Estado Civil 1</legend>
+    <div data-row-span="1">
+      <div data-field-span="1" class="select-dropdown" style="height: auto;">
+        <label>Estado Civil 1</label>
+        <input type="text" id="txt_select_estado_civil1" class="multi-select" style="width: unset;" data-originList="Soltero,Casado,Divorciado,Separado" data-destinationList="">
+      </div>
+    </div>
+  </fieldset>

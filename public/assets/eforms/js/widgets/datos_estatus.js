@@ -3,5 +3,5 @@
 //     destinationList: ['papaya','grape','orange']
 // });
 
-var txt_select = sellect("#txt_select");
-txt_select.init();
+// var txt_select = sellect("#txt_select");
+// txt_select.init();

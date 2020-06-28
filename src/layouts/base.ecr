@@ -341,6 +341,36 @@
                 if (window.location.href.indexOf("form/") == -1 && $(".form-show").length > 0)
                 {
                     Widget.render("show");
+                    await Main.timeout(1000);
+
+                    // Render multi selects
+                    var multi = document.querySelectorAll(".multi-select");
+                    multi.forEach(function(select){
+                        sellect("#"+select.id).init();
+                    });
+
+                    // Render Datefields
+                    var Datepicker = (function() {
+                    // Variables
+                    var $datepicker = $('.datepicker');
+                    // Methods
+                    function init($this) 
+                    {
+                        var options = {
+                            disableTouchKeyboard: true,
+                            autoclose: true
+                        };
+                        $this.datepicker(options);
+                    }
+                    // Events
+                    if ($datepicker.length) 
+                    {
+                        $datepicker.each(function(){
+                            init($(this));
+                        });
+                    }
+
+                    })();
                 }
 
                 // $.LoadingOverlay("hide");

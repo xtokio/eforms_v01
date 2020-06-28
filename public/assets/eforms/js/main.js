@@ -94,13 +94,17 @@ class Main
                     else
                         if(inputs[i].className == "sellect-element")
                         {
-                            // function we want to run
-                            var fnstring = `${inputs[i].id}`;
-                            // find object
-                            var fn = window[fnstring];
-                            // is object a function?
-                            if (typeof fn === "object") 
-                                data.push({"element":inputs[i].nodeName,"type":"multi","id":inputs[i].id,"value":fn.getSelected()});
+                            var values = "";
+                            // Array of selected items
+                            var arr = $(`#${inputs[i].id}`).parent().find(".sellect-destination-list .sellect-item");
+                            for(var pos = 0; pos < arr.length; pos++)
+                            {
+                                if(values == "")
+                                    values += arr[pos].innerText;
+                                else
+                                    values += ","+arr[pos].innerText;
+                            }
+                            data.push({"element":inputs[i].nodeName,"type":"multi","id":inputs[i].id,"value":values});
                         }
                         else
                             data.push({"element":inputs[i].nodeName,"type":inputs[i].type,"id":inputs[i].id,"value":inputs[i].value});
