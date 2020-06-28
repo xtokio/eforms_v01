@@ -78,5 +78,16 @@ module Controller
             {status: "OK", message: "Form : #{id} was updated."}.to_json
         end
 
+        def update_user(env)
+            id     =  env.params.json["id"].as(String)
+            user =  env.params.json["user"].as(String)
+
+            form_record = Model::ConnDB.get!(Model::Form, id)
+            form_record.assigned_to = user
+            changeset = Model::ConnDB.update(form_record)
+
+            {status: "OK", message: "Form : #{id} was updated."}.to_json
+        end
+
     end
 end

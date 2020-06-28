@@ -107,6 +107,7 @@ module Eforms
       is_admin =    env.session.bool("is_admin")
 
       status = Controller::Status.all()
+      users = Controller::Users.all()
       form_types = Controller::FormTypes.active()
       forms = Controller::ViewForms.show(id)
       render "src/views/dashboard/forms/show.ecr" , "src/layouts/base.ecr"
@@ -166,6 +167,7 @@ module Eforms
       id = env.params.url["id"]
       forms = Controller::ViewForms.show(id)
       status = Controller::Status.all()
+      users = Controller::Users.all()
       render "src/views/dashboard/forms/show.ecr"
     else
       {status: "ERROR"}.to_json
@@ -258,6 +260,15 @@ module Eforms
     env.response.content_type = "application/json"
     if Controller::Application.user_logged(env)
       Controller::Forms.update_status(env)
+    else
+      {status: "ERROR"}.to_json
+    end
+  end
+
+  post "/eforms/dashboard/form/update/user" do |env|
+    env.response.content_type = "application/json"
+    if Controller::Application.user_logged(env)
+      Controller::Forms.update_user(env)
     else
       {status: "ERROR"}.to_json
     end

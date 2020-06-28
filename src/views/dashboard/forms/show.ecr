@@ -2,7 +2,7 @@
     <div class="col-xl-2" style="padding-right: unset;">
         <div style="height: 100%; background: white">
             <div class="card-body" style="padding: unset;">
-                <div class="student_approved_list">
+                <div class="status_list">
                     <ul class="nav nav-sm flex-column">
                         <li class="nav-item">
                             <div class="form-group">
@@ -20,7 +20,26 @@
                         </li>
                     </ul>
                 </div>
-                
+                <% if env.session.bool("is_admin") %>
+                <div class="user_list">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <div class="form-group">
+                                <div class="dropdown" style="width: 100%;">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" style="width: 100%; box-shadow: unset; font-weight: unset; transform: unset;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Assign to
+                                    </button>
+                                    <div class="dropdown-menu" style="width: 100%;" aria-labelledby="dropdownMenuButton">
+                                    <% users.each do |item| %>
+                                        <a class="dropdown-item lnk_update_user" data-form-id="<%= forms[0].id %>" href="#"><%= item.name %></a>
+                                    <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <% end %>
                 <h6 class="heading-small text-muted" style="margin-left: 10px;">eForm</h6>
                 <div class="student_approved_list">
                     <ul class="nav nav-sm flex-column" style="margin-left: 10px;">
@@ -29,7 +48,9 @@
                             <br>
                             <span style="font-size: 0.7rem;">Folio &nbsp; &nbsp; &nbsp; <a href="#"><%= forms[0].form_number %></a></span>
                             <br>
-                            <span style="font-size: 0.7rem;">User &nbsp; &nbsp; &nbsp; <a href="#"><%= forms[0].assigned_to %></a></span>
+                            <span style="font-size: 0.7rem;">User &nbsp; &nbsp; &nbsp; 
+                                <a id="lnk_user_assigned" href="#"><%= forms[0].assigned_to %></a>                                
+                            </span>
                             <br>
                             <span style="font-size: 0.7rem;">Status &nbsp;&nbsp; <a href="#"><%= forms[0].status %></a></span>
                             <br>

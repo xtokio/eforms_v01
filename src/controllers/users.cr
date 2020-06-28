@@ -45,7 +45,7 @@ module Controller
                         env.session.bool("is_admin", true)
                     end
                 end
-                render "/eforms"
+                env.redirect "/eforms"
             end
         end
 

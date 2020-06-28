@@ -123,5 +123,18 @@ class Widget
             Main.show_success("Form updated to: "+status,function(){window.location.href = "/eforms";});
             
         });
+
+        // Update Form assigned user
+        $(".lnk_update_user").on("click", async function(){
+            let id = $(this).attr("data-form-id");
+            let user = $(this).text();
+            let params = {id,user};
+
+            var response = await Main.post("/eforms/dashboard/form/update/user",params).catch(message => Main.show_error(message));
+            var response_data = await response.json();
+            
+            Main.show_success("Form assigned to: "+user,function(){window.location.href = "/eforms";});
+            
+        });
     }
 }
