@@ -1,13 +1,6 @@
 # eForms
 Simple forms creation and follow ups
 
-https://app.mischicanadas.com/eforms
-
-User: `lgomez`
-
-Pass: `lgomez`
-<br>
-
 ##### Screenshots
 
 Login
